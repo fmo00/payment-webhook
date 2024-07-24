@@ -1,10 +1,11 @@
-import { AppController } from '@/application/app.controller';
-import { AppService } from '@/core/use-case/app.service';
+import { NotificationController } from '@/application/notification.controller';
+import { NotificationService } from '@/core/use-case/notification.service';
+import { DatasourceModule } from '@/datasource/datasource.module';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [DatasourceModule],
+  controllers: [NotificationController],
+  providers: [NotificationService],
 })
 export class AppModule {}
