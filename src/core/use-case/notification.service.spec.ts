@@ -1,15 +1,15 @@
-import { AppService } from '@/core/use-case/app.service';
+import { NotificationService } from '@/core/use-case/notification.service';
 import { Test, TestingModule } from '@nestjs/testing';
 
 describe('AppService', () => {
-  let service: AppService;
+  let service: NotificationService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AppService],
+      providers: [NotificationService],
     }).compile();
 
-    service = module.get<AppService>(AppService);
+    service = module.get<NotificationService>(NotificationService);
   });
 
   describe('AppService', () => {
