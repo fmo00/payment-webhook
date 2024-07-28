@@ -4,8 +4,8 @@ import { DatasourceModule } from '@/datasource/datasource.module';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [DatasourceModule],
   controllers: [NotificationController],
+  imports: [DatasourceModule],
   providers: [NotificationService],
 })
 export class AppModule {}
