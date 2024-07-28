@@ -1,18 +1,15 @@
+import { NotificationResponseDto } from '@/application/dto/notification-response.dto';
 import { NotificationTopicEnum } from '@/core/enum/notification-topic.enum';
+import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class NotificationService {
-  async execute(id: string, topic: string): Promise<any> {
-    //TODO: check notification type and send PUT to payment or order
-    if (this.isPaymentNotification(topic)) {
-      //TODO: implement datasource adapter call for payment PUT
-      return;
-    }
+  constructor(private readonly snackbarAdapterService: SnackbarServicePort) {}
 
-    if (this.isOrderNotification(topic)) {
-      //TODO: implement datasource adapter call for order PUT
-      return;
+  async execute(id: string, topic: string): Promise<NotificationResponseDto> {
+    if (this.isPaymentNotification(topic)) {
+      return await this.sendPaymentNotification(id);
     }
 
     throw new BadRequestException();
@@ -22,7 +19,9 @@ export class NotificationService {
     return NotificationTopicEnum['PAYMENT'] === topic;
   }
 
-  private isOrderNotification(topic: string): boolean {
-    return NotificationTopicEnum['ORDER'] === topic;
+  private async sendPaymentNotification(
+    id: string,
+  ): Promise<NotificationResponseDto> {
+    return await this.snackbarAdapterService.sendNotification(id);
   }
 }
