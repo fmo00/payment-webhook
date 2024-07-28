@@ -1,3 +1,4 @@
+import { NotificationResponseDto } from '@/application/dto/notification-response.dto';
 import { NotificationService } from '@/core/use-case/notification.service';
 import { Controller, Post, Query } from '@nestjs/common';
 
@@ -9,8 +10,7 @@ export class NotificationController {
   async notify(
     @Query('topic') topic: string,
     @Query('id') id: string,
-  ): Promise<any> {
-    //TODO: Implement DTO for response and use in this endpoint return
+  ): Promise<NotificationResponseDto> {
     return await this.notificationService.execute(id, topic);
   }
 }
