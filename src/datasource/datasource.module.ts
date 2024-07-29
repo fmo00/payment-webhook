@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { SnackbarApiAdapter } from './adapter/snackbar-adapter.service';
-import { SnackbarServicePort } from './port/snackbar.port';
+import { SnackbarApiAdapter } from '@/datasource/adapter/snackbar-adapter.service';
+import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
 
 @Module({
   imports: [],
