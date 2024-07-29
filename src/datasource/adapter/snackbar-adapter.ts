@@ -1,6 +1,5 @@
 import { NotificationResponseDto } from '@/application/dto/notification-response.dto';
 import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
-import { InternalServerErrorException } from '@nestjs/common';
 import axios from 'axios';
 
 export class SnackbarApiAdapter implements SnackbarServicePort {
@@ -15,9 +14,7 @@ export class SnackbarApiAdapter implements SnackbarServicePort {
       return await this.api.patch(`/payments/${id}`);
     } catch (error) {
       console.log(error);
-      throw new InternalServerErrorException({
-        description: 'Snackbar API is out of service',
-      });
+      return { message: 'Snackbar API is out of service'}
     }
   }
 }
