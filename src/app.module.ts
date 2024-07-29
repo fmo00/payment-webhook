@@ -1,11 +1,11 @@
 import { NotificationController } from '@/application/notification.controller';
-import { NotificationService } from '@/core/use-case/notification.service';
 import { DatasourceModule } from '@/datasource/datasource.module';
 import { Module } from '@nestjs/common';
+import { NotificationUsecase } from '@/core/use-case/notification.usecase';
 
 @Module({
   controllers: [NotificationController],
   imports: [DatasourceModule],
-  providers: [NotificationService],
+  providers: [NotificationUsecase],
 })
 export class AppModule {}

@@ -4,7 +4,7 @@ import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 @Injectable()
-export class NotificationService {
+export class NotificationUsecase {
   constructor(private readonly snackbarAdapterService: SnackbarServicePort) {}
 
   async execute(id: string, topic: string): Promise<NotificationResponseDto> {
