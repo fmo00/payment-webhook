@@ -1,9 +1,7 @@
 import { NotificationResponseDto } from '@/application/dto/notification-response.dto';
 import { NotificationTopicEnum } from '@/core/enum/notification-topic.enum';
 import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
-import { BadRequestException, Injectable } from '@nestjs/common';
 
-@Injectable()
 export class NotificationUsecase {
   constructor(private readonly snackbarAdapterService: SnackbarServicePort) {}
 
@@ -12,7 +10,7 @@ export class NotificationUsecase {
       return await this.sendPaymentNotification(id);
     }
 
-    throw new BadRequestException();
+    return { message: 'Not supported topic'}
   }
 
   private isPaymentNotification(topic: string): boolean {
