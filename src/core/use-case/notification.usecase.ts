@@ -7,7 +7,8 @@ export class NotificationUsecase {
 
   async execute(id: string, type: string): Promise<NotificationResponseDto> {
     if (this.isPaymentNotification(type)) {
-      return await this.sendPaymentNotification(id);
+      await this.sendPaymentNotification(id);
+      return { message: 'Notification sent successfully' };
     }
 
     return { message: 'Not supported topic' };

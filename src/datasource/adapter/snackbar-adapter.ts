@@ -6,7 +6,7 @@ export class SnackbarApiAdapter implements SnackbarServicePort {
   constructor() {}
 
   api = axios.create({
-    baseURL: 'http://localhost:3000/api/v1',
+    baseURL: 'http://snack-bar-api:3000/api/v1',
   });
 
   async sendNotification(id: string): Promise<NotificationResponseDto> {
