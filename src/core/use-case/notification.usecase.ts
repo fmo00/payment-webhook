@@ -1,20 +1,20 @@
 import { NotificationResponseDto } from '@/application/dto/notification-response.dto';
-import { NotificationTopicEnum } from '@/core/enum/notification-topic.enum';
+import { NotificationTypeEnum } from '@/core/enum/notification-type.enum';
 import { SnackbarServicePort } from '@/datasource/port/snackbar.port';
 
 export class NotificationUsecase {
   constructor(private readonly snackbarAdapterService: SnackbarServicePort) {}
 
-  async execute(id: string, topic: string): Promise<NotificationResponseDto> {
-    if (this.isPaymentNotification(topic)) {
+  async execute(id: string, type: string): Promise<NotificationResponseDto> {
+    if (this.isPaymentNotification(type)) {
       return await this.sendPaymentNotification(id);
     }
 
-    return { message: 'Not supported topic'}
+    return { message: 'Not supported topic' };
   }
 
-  private isPaymentNotification(topic: string): boolean {
-    return NotificationTopicEnum['PAYMENT'] === topic;
+  private isPaymentNotification(type: string): boolean {
+    return NotificationTypeEnum['PAYMENT'] === type;
   }
 
   private async sendPaymentNotification(

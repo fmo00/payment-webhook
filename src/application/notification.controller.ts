@@ -8,9 +8,9 @@ export class NotificationController {
 
   @Post('/notifications')
   async notify(
-    @Query('topic') topic: string,
-    @Query('id') id: string,
+    @Query('type') type: string,
+    @Query('data.id') id: string,
   ): Promise<NotificationResponseDto> {
-    return await this.notificationUsecase.execute(id, topic);
+    return await this.notificationUsecase.execute(id, type);
   }
 }

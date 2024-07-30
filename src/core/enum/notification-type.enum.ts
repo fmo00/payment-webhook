@@ -1,4 +1,4 @@
-export enum NotificationTopicEnum {
+export enum NotificationTypeEnum {
   PAYMENT = 'payment',
   CHARGEBACK = 'chargebacks',
   ORDER = 'merchant_order',
