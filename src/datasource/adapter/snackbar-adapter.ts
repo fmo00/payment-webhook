@@ -11,7 +11,8 @@ export class SnackbarApiAdapter implements SnackbarServicePort {
 
   async sendNotification(id: string): Promise<NotificationResponseDto> {
     try {
-      return await this.api.patch(`/payments/${id}`);
+      const response = (await this.api.patch(`/payments/${id}`)).data;
+      return { message: 'Notification was registered successfully'} 
     } catch (error) {
       console.log(error);
       return { message: 'Snackbar API is out of service'}
